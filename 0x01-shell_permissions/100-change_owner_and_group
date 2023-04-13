@@ -1,2 +1,2 @@
 #!/bin/bash
-sudo chown -hR nincent:staff .
+sudo chown -hR nincent: staff .
