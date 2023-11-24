@@ -22,6 +22,8 @@ stop()
 # Function to restart the process
 restart() 
 {
+	stop
+	start
     	echo "manage_my_process restarted"
 }
 
