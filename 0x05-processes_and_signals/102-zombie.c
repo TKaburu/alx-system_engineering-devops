@@ -32,12 +32,12 @@ int main(void)
 	int zombies = 0;
 	pid_t babe;
 
-	while (zombies < 6)
+	while (zombies < 5)
 	{
 		babe = fork();
 		if (babe == 0)
 		{
-			printf("Zombie process created, PID: %d\n", babe);
+			printf("Zombie process created, PID: %d\n", getpid());
 			exit(0);
 		}
 		zombies++;
