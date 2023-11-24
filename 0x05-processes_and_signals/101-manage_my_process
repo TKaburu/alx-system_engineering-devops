@@ -14,7 +14,7 @@ start()
 # Function to stop the process
 stop() 
 {
-    	kill "$(cat /var/run/my_process.pid)"
+    	pkill "$(cat /var/run/my_process.pid)"
     	rm /var/run/my_process.pid
     	echo "manage_my_process stopped"
 }
@@ -37,7 +37,7 @@ case "$1" in
         	restart
         	;;
     	*)
-		echo "Usage: $(basename "$0") {start|stop|restart}"
+		echo "Usage: manage_my_process {start|stop|restart}"
         	exit 1
         	;;
 esac
