@@ -22,8 +22,10 @@ stop()
 # Function to restart the process
 restart() 
 {
-	stop
-	start
+	pkill "$(cat /var/run/my_process.pid)"
+	rm /var/run/my_process.pid
+	$MANAGE_SCRIPT &
+	echo $! > /var/run/my_process.pid
     	echo "manage_my_process restarted"
 }
 
