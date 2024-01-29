@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+# configure web-02 to be identical to web-01
+
+# install nginx
+sudo apt update
+sudo apt install -y nginx
+
+# Configure Nginx to add a custom header
+echo 'server {
+    listen 80;
+
+    # Add the custom header
+    add_header X-Served-By $HOSTNAME;
+
+    location / {
+        # Your existing location configuration goes here
+    }
+}' | sudo tee /etc/nginx/sites-available/default
+
+sudo service nginx restart
