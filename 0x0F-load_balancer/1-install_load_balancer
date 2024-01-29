@@ -1,0 +1,21 @@
+#!/usr/bin/env bash
+# install  HAproxy on lb-01 server and distribute requests
+
+# install HAProxy
+sudo apt update
+sudo apt install -y haproxy
+
+# Configure HAProxy to distribute traffic using roundrobin
+echo 'frontend web_frontend
+    bind *:80
+    mode http
+    default_backend web_backend
+
+backend web_backend
+    mode http
+    balance roundrobin
+    server web-01 34.229.69.59:80 check
+    server web-02 54.85.196.44:80 check
+' | sudo tee /etc/haproxy/haproxy.cfg
+
+sudo service haproxy restart
