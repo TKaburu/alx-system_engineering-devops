@@ -12,9 +12,6 @@ echo 'server {
     # Add the custom header
     add_header X-Served-By $HOSTNAME;
 
-    location / {
-        # Your existing location configuration goes here
-    }
 }' | sudo tee /etc/nginx/sites-available/default
 
 sudo service nginx restart
