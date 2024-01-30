@@ -3,6 +3,7 @@
 # Update and install nginx
 exec { 'update':
   command => '/usr/bin/apt-get update',
+
 }
 
 package { 'nginx':
@@ -18,7 +19,7 @@ file_line { 'custom header':
 }
 
 # start nginx
-service { 'run nginx':
+service { 'nginx':
   ensure  => running,
   require => Package['nginx'],
 }
