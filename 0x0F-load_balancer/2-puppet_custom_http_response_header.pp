@@ -2,7 +2,7 @@
 
 # Update and install nginx
 exec { 'update':
-  command => 'sudo apt-get update',
+  command => '/usr/bin/apt-get update',
 }
 
 package { 'nginx':
