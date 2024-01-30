@@ -15,7 +15,7 @@ file_line { 'custom header':
   ensure => present,
   path   => '/etc/nginx/sites-enabled/default',
   after  => 'server_name _;',
-  line   => 'add_header X-Served-By $hostname;',
+  line   => 'add_header X-Served-By ${hostname};',
 }
 
 # start nginx
