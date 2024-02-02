@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+# configure ngnix in 5 or less lines
+rm /etc/nginx/sites-enabled/default
+ln -s /etc/nginx/sites-available/default /etc/nginx/sites-enabled/default
+service nginx restart
