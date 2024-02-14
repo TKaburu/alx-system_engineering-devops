@@ -31,15 +31,16 @@ defaults
     errorfile 503 /etc/haproxy/errors/503.http
     errorfile 504 /etc/haproxy/errors/504.http
 
-frontend tk-frontend
+
+frontend web_frontend
         bind *:80
         mode http
         http-request redirect scheme https code 301 unless { ssl_fc }
         http-request set-header X_Forwarded-Proto http
-        default_backend tk-backend
+        default_backend web-backend
 
-frontend tk-https
-    bind *:443 ssl crt /etc/haproxy/certs/traceykaburu.tech.pem
+frontend web_frontend-https
+    bind *:443 ssl crt /etc/haproxy/certs/www.traceykaburu.tech.pem
     reqadd X-Forwarded-Proto:\ https
     default_backend web_backend
 
