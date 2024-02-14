@@ -11,7 +11,7 @@ sudo service nginx start
 # Allow nginx by listening on port 80
 sudo ufw allow 'Nginx HTTP'
 
-echo 'Hello World!' | sudo tee /var/www/html/index.nginx-debian.html
+echo 'Hello World!' | sudo tee /var/www/html/index.html
 
 # Restarting nginx
 sudo service nginx restart
