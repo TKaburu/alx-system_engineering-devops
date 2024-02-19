@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""Exports data in cvs format"""
+"""Exports data in CSV format"""
 
 from requests import get
 from sys import argv
@@ -7,13 +7,15 @@ from sys import argv
 
 if __name__ == '__main__':
     user_id = argv[1]
-    response = get(f'https://jsonplaceholder.typicode.com/users/{user_id}')
+    url = 'https://jsonplaceholder.typicode.com/users/{}'.format(user_id)
+    response = get(url)
     username = response.json().get('username')
 
-    response = get(f'https://jsonplaceholder.typicode.com/users/\
-                   {user_id}/todos')
+    url = 'https://jsonplaceholder.typicode.com/users/{}/todos'.format(user_id)
+    response = get(url)
     tasks = response.json()
-    with open(f'{user_id}.csv', 'w') as file:
+    with open('{}.csv'.format(user_id), 'w') as file:
         for task in tasks:
-            file.write(f'"{user_id}","{username}","{task.get('completed')}",\
-                       "{task.get('title')}"\n')
+            file.write('"{}","{}","{}","{}"\n'
+                       .format(user_id, username, task.get('completed'),
+                               task.get('title')))
