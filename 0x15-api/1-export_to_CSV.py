@@ -1,5 +1,4 @@
 #!/usr/bin/python3
-
 """Exports data in cvs format"""
 
 from requests import get
@@ -11,8 +10,10 @@ if __name__ == '__main__':
     response = get(f'https://jsonplaceholder.typicode.com/users/{user_id}')
     username = response.json().get('username')
 
-    response = get(f'https://jsonplaceholder.typicode.com/users/{user_id}/todos')
+    response = get(f'https://jsonplaceholder.typicode.com/users/\
+                   {user_id}/todos')
     tasks = response.json()
     with open(f'{user_id}.csv', 'w') as file:
         for task in tasks:
-            file.write(f'"{user_id}","{username}","{task.get('completed')}","{task.get('title')}"\n')
+            file.write(f'"{user_id}","{username}","{task.get('completed')}",\
+                       "{task.get('title')}"\n')
